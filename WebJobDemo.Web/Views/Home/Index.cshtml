@@ -1,0 +1,46 @@
+﻿@using WebJobDemo.Web.ViewModels;
+@model QueueMessageViewModel
+
+<div class="row">
+    <div class="col-xs-12">
+        <h1>Demo Console</h1>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    if (!string.IsNullOrEmpty(Model.LastPostStatus))
+    {
+        <div class="alert alert-info">
+            @Model.LastPostStatus
+        </div>
+    }
+}
+
+<div class="row">
+    <div class="col-xs-12 col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">Storage Queue Message</div>
+            <div class="panel-body">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="StorageQueueMessage">Message</label>
+                                @Html.TextBoxFor(m => m.StorageQueueMessage, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <input type="submit" value="Send" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
